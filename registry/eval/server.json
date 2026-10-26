@@ -3,15 +3,15 @@
   "name": "io.github.JcJamet/ia-qa-eval",
   "title": "IA-QA Eval & RAG — 38 tools",
   "description": "LLM & RAG evals: hallucination, eval contracts, semantic tests, tokens & model info. Free, no key.",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "repository": {
+    "url": "https://github.com/ia-qa-com/mcp",
+    "source": "github"
+  },
   "remotes": [
     {
       "type": "streamable-http",
       "url": "https://www.ia-qa.com/mcp/eval"
     }
-  ],
-  "repository": {
-    "url": "https://github.com/ia-qa-com/mcp",
-    "source": "github"
-  }
+  ]
 }

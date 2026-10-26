@@ -3,15 +3,15 @@
   "name": "io.github.JcJamet/ia-qa-data",
   "title": "IA-QA Data & Dev — 36 tools",
   "description": "Dev utilities for agents: JSON/YAML/CSV, schema validation, encoding, text & time. Free, no key.",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "repository": {
+    "url": "https://github.com/ia-qa-com/mcp",
+    "source": "github"
+  },
   "remotes": [
     {
       "type": "streamable-http",
       "url": "https://www.ia-qa.com/mcp/data"
     }
-  ],
-  "repository": {
-    "url": "https://github.com/ia-qa-com/mcp",
-    "source": "github"
-  }
+  ]
 }

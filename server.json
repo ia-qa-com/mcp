@@ -3,15 +3,15 @@
   "name": "io.github.JcJamet/ia-qa-toolbox",
   "title": "IA-QA — 152 QA & Dev Tools for AI Agents",
   "description": "152 free QA tools for agents: injection scan, evals, RAG, web audits. Smaller packs: /mcp/{pack}.",
-  "version": "1.1.0",
+  "version": "1.1.1",
+  "repository": {
+    "url": "https://github.com/ia-qa-com/mcp",
+    "source": "github"
+  },
   "remotes": [
     {
       "type": "streamable-http",
       "url": "https://www.ia-qa.com/mcp"
     }
-  ],
-  "repository": {
-    "url": "https://github.com/ia-qa-com/mcp",
-    "source": "github"
-  }
+  ]
 }

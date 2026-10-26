@@ -3,15 +3,15 @@
   "name": "io.github.JcJamet/ia-qa-security",
   "title": "IA-QA Security — 30 tools",
   "description": "Agent security: prompt injection, PII & secret scans, TLS/header/CORS audits, MCP checks. Free.",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "repository": {
+    "url": "https://github.com/ia-qa-com/mcp",
+    "source": "github"
+  },
   "remotes": [
     {
       "type": "streamable-http",
       "url": "https://www.ia-qa.com/mcp/security"
     }
-  ],
-  "repository": {
-    "url": "https://github.com/ia-qa-com/mcp",
-    "source": "github"
-  }
+  ]
 }
