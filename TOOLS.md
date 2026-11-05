@@ -1,22 +1,22 @@
 # IA-QA MCP tools (152)
 
-Generated on 2026-10-26 from the server's definitions. Live list: `GET https://www.ia-qa.com/mcp` · full schemas: `GET https://www.ia-qa.com/mcp?full=1`.
+Generated on 2026-11-05 from the server's definitions. Live list: `GET https://www.ia-qa.com/mcp` · full schemas: `GET https://www.ia-qa.com/mcp?full=1`.
 
 ## eval
 
 | Tool | What it does | Packs |
 |---|---|---|
 | `get_testing_guidelines` | Query the IA-QA methodology knowledge base. | eval |
-| `run_eval_contract` | Parse a .ia-eval.yaml LLM test suite, call the specified LLM model for each scenario, run all configured scorers, and return a structured JSON report with per-scenario Pass/Fail verdicts and a Markdown summary. | eval |
+| `run_eval_contract` | Run an IA-EVAL test suite (.ia-eval.yaml contract): call the model per scenario; return passed (true, false, null if undecided) and a verdict (PASS, FAIL, PARTIAL). | eval |
 | `run_semantic_tests` | Semantic assertion primitive: compare actual vs expected text pairs using cosine similarity + ROUGE-L. | eval |
-| `generate_ci_workflow` | Generate a ready-to-commit GitHub Actions workflow that gates a build on IA-QA. | eval |
+| `generate_ci_workflow` | Generate a ready-to-commit GitHub Actions workflow that gates a build on IA-QA: "eval_contract" runs a .ia-eval.yaml through ia-qa-com/eval-action@v1 (needs a provider key as a repo secret), "cli_checks" runs deterministic tools via npx @ia-qa/cli and fails the build on their verdict, "selector_drift" gates E2E selectors with @ia-qa/self-healing. | eval |
 | `needle_haystack_generate` | Generate a "needle in a haystack" test: embeds a target fact into a large block of filler text at a specified position. | eval |
 | `list_local_tests` | Discover .ia-eval.yaml LLM test suite files in the project directory. | — |
 | `generate_html_report` | Convert a run_eval_contract() LLM Test Runner JSON result into a fully self-contained dark-themed HTML report with Pass/Fail badges, side-by-side Input/Output/Ground-Truth panels, evaluator score bars, and a radar chart. | — |
 | `generate_eval_yaml` | Generate a complete .ia-eval.yaml evaluation contract from a plain-language description of what your LLM should do. | eval |
-| `validate_agent_trajectory` | Run declarative assertions on an agent trace (OpenAI tool-call messages, Anthropic tool_use/tool_result blocks, LangChain run trees, or plain text ReAct logs). | security |
-| `metamorphic_check` | Reference-free stability primitive: instead of comparing an answer to a ground truth, it checks that an assistant's answer stays INVARIANT when the QUESTION is transformed (typo, casing, paraphrase, reordering, translation). | eval |
-| `test_skill` | Test a SKILL.md in the open Agent Skills format (https://agentskills.io/specification — read by Claude Code, Codex, GitHub Copilot, Cursor, Gemini CLI, OpenCode and others) in two stages. | eval |
+| `validate_agent_trajectory` | Run declarative assertions on an agent trace (OpenAI tool calls, Anthropic tool_use, LangChain run trees, ReAct logs). | security |
+| `metamorphic_check` | Reference-free stability check: does an assistant's answer stay the same when the QUESTION is transformed (case, typo, paraphrase, reorder, translation)? | eval |
+| `test_skill` | Test a SKILL.md (Agent Skills format). | eval |
 
 ## meta
 
@@ -35,7 +35,7 @@ Generated on 2026-10-26 from the server's definitions. Live list: `GET https://w
 | `run_pr_gate_pipeline` | Review triage for a pull request. | — |
 | `diff_mappings` | Diff a baseline page mapping against a current one and return a CI-style verdict: PASS / FIX / BLOCK, plus per-element drift (ok, renamed, healable, ambiguous, lost, added, rebound). | — |
 | `sandbox_scenario` | Get a ready-made selector-drift test case with a known-correct answer, for testing this MCP server or an agent workflow end to end. | — |
-| `prompt_injection_scan` | Scan user input or prompts for common prompt injection patterns. | security |
+| `prompt_injection_scan` | Scan user input or prompts for prompt injection patterns. | security |
 | `hallucination_check` | Lexical hallucination check: verifies an LLM answer's words, numbers and polarity against the provided source/context. | eval |
 | `guardrail_test` | Test an LLM response against a set of guardrail rules: must-include, must-not-include, max length, required format, language, forbidden patterns, and custom regex. | security |
 | `diff_text` | Compute a unified line-by-line diff between two text strings (LCS algorithm). | data |
@@ -45,28 +45,28 @@ Generated on 2026-10-26 from the server's definitions. Live list: `GET https://w
 | `analyze_responses` | Semantically analyze N already-produced model outputs for the SAME task (the MCP counterpart to the LLM Sandbox). | eval |
 | `prompt_test_suite` | Define a test suite for a prompt: provide the system prompt, user prompt, and expected output criteria. | eval |
 | `mcp_server_health_check` | Check an MCP server's tool definitions without contacting it — for a server not deployed yet, a stdio server, or a CI gate. | security |
-| `mcp_server_evaluate` | Run a compliance evaluation against a live MCP server over Streamable HTTP, the way a client meets it. | security |
+| `mcp_server_evaluate` | Check that a live MCP server over Streamable HTTP speaks the protocol, 2026-07-28 or earlier: handshake or server/discover, tools/list and its definitions, error codes, one tools/call, structuredContent against outputSchema, latency. | security |
 | `llm_format_check` | Validate that an LLM output matches an expected format: JSON, Markdown, code block, bullet list, numbered list, table, YAML, XML, or custom regex. | eval |
 | `consistency_check` | Compare multiple LLM responses to the same prompt and detect inconsistencies using Jaccard word-overlap similarity and fact drift (number comparison). | eval |
 | `llm_json_schema_check` | Validate that an LLM JSON output matches a JSON Schema definition. | eval |
 | `response_quality_score` | Score an LLM response against the criteria you pass: coverage of expected_keywords and compliance with max_length. | eval |
 | `toxicity_scan` | Scan text for toxic language, hate speech, bias/stereotype framing, violence, sexual and self-harm content. | security |
-| `function_call_validate` | Validate an LLM function call / tool_use output: check that function name is in allowed list, arguments match expected schema, no extra/missing args. | security |
+| `function_call_validate` | Validate an LLM function call / tool_use output: check that function name is in allowed list, arguments match expected schema (types, enums, ranges), no extra/missing args. | security |
 | `conversation_analyze` | Analyze a multi-turn conversation for context retention, topic drift, instruction following, and repetition. | eval |
-| `mcp_schema_lint` | Lint an MCP tool definition for best practices: naming conventions, description quality, schema completeness, required fields consistency, description length. | security |
+| `mcp_schema_lint` | Lint one MCP tool definition with the same rules as mcp_server_health_check: errors break the MCP spec (FAIL), documentation_issues are what its strict mode refuses — a parameter without description or type (FIX, never an A) — and suggestions are style only (snake_case) and change nothing. | security |
 | `cot_analyzer` | Analyze a Chain-of-Thought (CoT) or reasoning trace from an LLM. | eval |
 | `ab_test_report` | Generate an A/B test report comparing two prompts or model configurations. | eval |
 | `similarity_score` | Compute text similarity between reference and hypothesis using multiple metrics: Cosine (BoW, TF-IDF), Jaccard, ROUGE-1, ROUGE-2, ROUGE-L, and BLEU. | eval |
 | `bias_detect` | Analyse a set of LLM responses generated from the same prompt template but with different demographic variants (gender, origin, age, tone). | security |
-| `run_vlm_test_suite` | Run a test suite against a Vision-Language Model (VLM) — send an image (URL or base64) + N test cases (each with a question + assertion) to GPT-4o, Claude 3.5, or Gemini. | eval |
-| `multimodal_eval_guide` | Unified tool for multimodal AI evaluation: set action=guide for reference thresholds/interpretation (CLIP, FID, VQA), or set action=clip_score / fid_score / vqa_accuracy / pipeline to compute real metrics via HuggingFace Inference API and VLM BYOK calls. | — |
-| `run_vlm_test_suite_batch` | Compare multiple VLMs on the same test suite in parallel — send an image (URL or base64) + N test cases to all models simultaneously. | — |
+| `run_vlm_test_suite` | Test a vision model (OpenAI, Anthropic or Gemini) on one image: each test case asks a question and asserts on the answer (contains, not_contains, json_format, min_length, max_length, semantic_contains = TF-IDF cosine ≥ 0.4). | eval |
+| `multimodal_eval_guide` | Multimodal evaluation: action=guide (default) interprets a CLIP/FID/VQA score against reference thresholds; clip_score, fid_score, vqa_accuracy compute the metric (HuggingFace, or your VLM key for VQA); pipeline runs all three. | — |
+| `run_vlm_test_suite_batch` | Compare several vision models on the same image and test cases, in parallel (same assertions as run_vlm_test_suite). | — |
 
 ## integrations
 
 | Tool | What it does | Packs |
 |---|---|---|
-| `jira_to_test_suite` | Transform a Jira ticket into a complete test suite: Gherkin scenarios, E2E steps, API test cases, test data matrix, and ambiguity detection. | — |
+| `jira_to_test_suite` | Turn a Jira ticket into a test suite: Gherkin scenarios, E2E steps, API tests, test data and the ambiguities to clarify. | — |
 | `post_jira_comment` | Post the output of jira_to_test_suite as a formatted comment on the source Jira ticket. | — |
 | `create_confluence_page` | Create a new Confluence page from the output of jira_to_test_suite. | — |
 | `fetch_jira_issue` | Fetch a complete Jira issue: summary, description converted to Markdown, status, assignee, priority, labels, custom fields, and optionally comments and attachment metadata. | — |
@@ -79,12 +79,12 @@ Generated on 2026-10-26 from the server's definitions. Live list: `GET https://w
 | Tool | What it does | Packs |
 |---|---|---|
 | `redact_pii` | Automatically detect and redact Personally Identifiable Information (PII) from text. | security |
-| `secret_scan` | Scan text or code for leaked secrets: API keys (AWS, GCP, Azure, OpenAI, Anthropic, Stripe, GitHub, GitLab, Slack, Twilio, SendGrid, HuggingFace), private keys (RSA/EC/PGP), JWTs, database connection strings, Bearer tokens, and Basic auth headers. | security |
-| `shield_analyze` | Run a comprehensive AI guardrail analysis on an LLM response. | security |
+| `secret_scan` | Scan text or code for leaked secrets: API keys (AWS, GCP, Azure, OpenAI, Anthropic, Stripe, GitHub, GitLab, Slack, Twilio, SendGrid, HuggingFace), Slack / Teams / Discord webhook URLs, private keys, JWTs, database connection strings, Bearer and Basic auth headers, and hard-coded values assigned to password/secret/token names (a value read at run time — Cypress.env(), os.getenv() — is not flagged). | security |
+| `shield_analyze` | One-call safety gate for an LLM response: grounding (with source), prompt injection on the response AND the prompt (checks.injection / checks.injection_prompt), toxicity, PII, guardrail rules, quality, plus an LLM review on Groq (server key; model "none" skips it and sends nothing out). | security |
 | `security_headers_check` | Analyse the HTTP security headers of a public URL OR of raw response headers you paste in. | security |
 | `ssl_certificate_check` | Analyse the SSL/TLS certificate of any HTTPS host. | security |
-| `cors_test` | Test a URL for CORS misconfigurations. | security |
-| `cors_checker` | Check the CORS configuration of a URL the same way a browser would. | security |
+| `cors_test` | Audit a URL for CORS misconfigurations across several origins: wildcard with credentials, reflected origin, null origin, subdomain bypass, missing Vary. | security |
+| `cors_checker` | Would a browser on this origin be allowed to read this URL? | security |
 | `cookie_security_audit` | Audit the security attributes of cookies set by any URL. | security |
 | `web_security_audit` | Run a comprehensive web security audit combining headers, SSL, CORS, and cookies checks — then use an LLM to produce a prioritised remediation plan. | security |
 
@@ -103,7 +103,7 @@ Generated on 2026-10-26 from the server's definitions. Live list: `GET https://w
 | `prompt_template_fill` | Fill a prompt template with variables. | — |
 | `few_shot_formatter` | Format few-shot examples for LLM prompts. | — |
 | `system_prompt_builder` | Build a structured system prompt from components: role, task, constraints, output format, tone, language, and examples. | — |
-| `rerank_evaluate` | Evaluate RAG retrieval quality: rank passages against a query and compute Precision@k / Recall@k plus a PASS/FAIL CI verdict from ground-truth relevance labels. | eval |
+| `rerank_evaluate` | Evaluate RAG retrieval: rank passages against a query, compute Precision@k / Recall@k and a PASS/FAIL verdict from your relevance labels. | eval |
 
 ## llm
 
@@ -113,15 +113,15 @@ Generated on 2026-10-26 from the server's definitions. Live list: `GET https://w
 | `truncate_to_tokens` | Truncate text to at most N tokens (cl100k_base: ~4 chars/token) to avoid exceeding an LLM context window. | — |
 | `split_chunks` | Split text into chunks of at most N tokens (cl100k_base: ~4 chars/token) with optional overlap. | — |
 | `extract_json_from_text` | Extract the first valid JSON object or array embedded in chaotic LLM output (surrounded by markdown fences, prose, or explanatory text). | eval |
-| `estimate_llm_cost` | Estimate the API cost in USD for a given model and token counts. | eval |
+| `estimate_llm_cost` | Estimate the API cost in USD for a given model and token counts, at the price read daily from the provider's own pricing page (prices_as_of, price_status). | eval |
 | `token_budget_calculator` | Plan token allocation across system prompt, user input, context/RAG chunks, and expected output. | eval |
 | `context_window_check` | Given an array of message objects [{role, content}], estimate total token usage and check if it fits in the target model's context window. | eval |
 | `model_info` | Get detailed specs for an AI model: context window, pricing per 1K tokens, knowledge cutoff, provider, multimodal support, reasoning capabilities, and feature list. | eval |
-| `compare_models` | Compare 2-5 AI models side by side: context window, pricing, multimodal, reasoning capabilities, and provider. | eval |
+| `compare_models` | Put 2-5 AI models side by side: price per 1k tokens, context window, multimodal, reasoning, provider, pricing page. | eval |
 | `list_llm_models` | List all LLM models available on ia-qa.com with their provider, API endpoint, and capabilities. | eval |
-| `llm_generate` | Generate text using open-source LLM models hosted on Groq (ultra-fast) or HuggingFace Inference (serverless). | eval |
+| `llm_generate` | Generate text with an open-source model hosted on Groq, on the server's key — no API key needed. | eval |
 | `optimize_prompt_tokens` | Compress an LLM prompt by removing filler words, verbose phrases, duplicate sentences, and unnecessary whitespace. | — |
-| `llm_fit_finder` | Find the best LLM for a given use case. | — |
+| `llm_fit_finder` | Shortlist LLMs on facts, no ranking: cloud models with the features you need within a monthly budget, cheapest first; or local models that fit your VRAM, largest first, with the ollama command. | — |
 
 ## dev
 
@@ -139,7 +139,7 @@ Generated on 2026-10-26 from the server's definitions. Live list: `GET https://w
 | `parse_http_headers` | Parse a raw HTTP headers block into a structured JSON object. | security |
 | `generate_curl` | Generate a curl command from request parameters. | — |
 | `extract_todos` | Extract TODO, FIXME, HACK, BUG, NOTE, OPTIMIZE, and custom tags from any source code or text. | — |
-| `detect_secrets` | Scan code or config files for hardcoded secrets: AWS keys, GitHub tokens, OpenAI/Anthropic API keys, Stripe secrets, JWTs, database connection strings, and generic passwords. | security |
+| `detect_secrets` | Scan code or config files for hardcoded secrets: AWS keys, GitHub tokens, OpenAI/Anthropic API keys, Stripe secrets, JWTs, Slack/Teams/Discord webhook URLs, session cookies, database connection strings, and generic passwords. | security |
 | `count_code_lines` | Count lines of code: total, code lines, comment lines, blank lines, and comment density. | data |
 | `lint_commit_message` | Validate a git commit message against the Conventional Commits spec (feat, fix, docs, style, refactor, test, chore, ci, perf, build). | data |
 | `format_bytes` | Convert raw byte counts to human-readable sizes in SI (KB=1000) or IEC (KiB=1024) units, or parse size strings back to bytes. | — |
