@@ -11,9 +11,9 @@ This repository **describes** the hosted server; it holds no server code. The li
 
 | Endpoint | Tools listed | For |
 |---|---|---|
-| `https://www.ia-qa.com/mcp` | all 152 | clients with no tool limit |
+| `https://www.ia-qa.com/mcp` | all 153 | clients with no tool limit |
 | `https://www.ia-qa.com/mcp/security` | 30 | prompt injection, PII and secret scans, TLS/header/CORS audits, MCP server checks |
-| `https://www.ia-qa.com/mcp/eval` | 38 | hallucination, eval contracts, semantic and RAG tests, tokens and models |
+| `https://www.ia-qa.com/mcp/eval` | 39 | hallucination, eval contracts, semantic and RAG tests, tokens and models |
 | `https://www.ia-qa.com/mcp/data` | 36 | JSON/YAML/CSV, schema validation, encoding, text and time utilities |
 
 Clients cap how many tools they load (VS Code Copilot 128 per request, Cursor about 40). A pack lists only its tools; for a tool outside it, add the full server or the pack that lists it — `find_tool` searches everything and says which pack lists each tool.
@@ -68,14 +68,14 @@ For tools that must run next to your app (selector self-healing, app discovery),
 
 ### `eval` — https://www.ia-qa.com/mcp/eval
 
-`get_testing_guidelines` · `run_eval_contract` · `run_semantic_tests` · `generate_eval_yaml` · `generate_ci_workflow` · `metamorphic_check` · `needle_haystack_generate` · `test_skill` · `hallucination_check` · `similarity_score` · `consistency_check` · `llm_output_validator` · `llm_format_check` · `llm_json_schema_check` · `response_quality_score` · `compare_responses` · `analyze_responses` · `prompt_test_suite` · `cot_analyzer` · `conversation_analyze` · `ab_test_report` · `embedding_similarity` · `rag_relevance_rank` · `rerank_evaluate` · `bm25_score` · `build_rag_prompt` · `count_tokens` · `token_budget_calculator` · `context_window_check` · `list_llm_models` · `model_info` · `compare_models` · `estimate_llm_cost` · `llm_generate` · `run_vlm_test_suite` · `extract_json_from_text` · `find_tool` · `rate_tool`
+`get_testing_guidelines` · `run_eval_contract` · `run_semantic_tests` · `generate_eval_yaml` · `generate_ci_workflow` · `metamorphic_check` · `needle_haystack_generate` · `test_skill` · `skill_interview` · `hallucination_check` · `similarity_score` · `consistency_check` · `llm_output_validator` · `llm_format_check` · `llm_json_schema_check` · `response_quality_score` · `compare_responses` · `analyze_responses` · `prompt_test_suite` · `cot_analyzer` · `conversation_analyze` · `ab_test_report` · `embedding_similarity` · `rag_relevance_rank` · `rerank_evaluate` · `bm25_score` · `build_rag_prompt` · `count_tokens` · `token_budget_calculator` · `context_window_check` · `list_llm_models` · `model_info` · `compare_models` · `estimate_llm_cost` · `llm_generate` · `run_vlm_test_suite` · `extract_json_from_text` · `find_tool` · `rate_tool`
 
 ### `data` — https://www.ia-qa.com/mcp/data
 
 `format_json` · `json_schema_validate` · `json_diff` · `extract_json_path` · `flatten_json` · `json_to_yaml` · `yaml_to_json` · `xml_to_json` · `parse_csv` · `json_to_csv` · `mock_from_schema` · `json_schema_generate` · `openapi_validate` · `timestamp_convert` · `cron_parse` · `validate_email` · `regex_test` · `diff_text` · `text_stats` · `case_convert` · `generate_slug` · `base64_encode` · `base64_decode` · `url_encode` · `url_decode` · `generate_uuid` · `hash_text` · `number_base_convert` · `color_convert` · `lorem_ipsum` · `decode_jwt` · `env_parse` · `count_code_lines` · `lint_commit_message` · `find_tool` · `rate_tool`
 
-All 152 tools, by category: [TOOLS.md](TOOLS.md).
+All 153 tools, by category: [TOOLS.md](TOOLS.md).
 
 ---
 
-Generated from the server's own definitions on 2026-11-05. The live list (`GET https://www.ia-qa.com/mcp`) wins if this page disagrees.
+Generated from the server's own definitions on 2026-11-08. The live list (`GET https://www.ia-qa.com/mcp`) wins if this page disagrees.

@@ -1,6 +1,6 @@
-# IA-QA MCP tools (152)
+# IA-QA MCP tools (153)
 
-Generated on 2026-11-05 from the server's definitions. Live list: `GET https://www.ia-qa.com/mcp` · full schemas: `GET https://www.ia-qa.com/mcp?full=1`.
+Generated on 2026-11-08 from the server's definitions. Live list: `GET https://www.ia-qa.com/mcp` · full schemas: `GET https://www.ia-qa.com/mcp?full=1`.
 
 ## eval
 
@@ -16,7 +16,8 @@ Generated on 2026-11-05 from the server's definitions. Live list: `GET https://w
 | `generate_eval_yaml` | Generate a complete .ia-eval.yaml evaluation contract from a plain-language description of what your LLM should do. | eval |
 | `validate_agent_trajectory` | Run declarative assertions on an agent trace (OpenAI tool calls, Anthropic tool_use, LangChain run trees, ReAct logs). | security |
 | `metamorphic_check` | Reference-free stability check: does an assistant's answer stay the same when the QUESTION is transformed (case, typo, paraphrase, reorder, translation)? | eval |
-| `test_skill` | Test a SKILL.md (Agent Skills format). | eval |
+| `test_skill` | Test a SKILL.md. | eval |
+| `skill_interview` | Help a person write a SKILL.md they can test. | eval |
 
 ## meta
 
