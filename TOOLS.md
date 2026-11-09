@@ -104,7 +104,7 @@ Generated on 2026-11-09 from the server's definitions. Live list: `GET https://w
 | `prompt_template_fill` | Fill a prompt template with variables. | — |
 | `few_shot_formatter` | Format few-shot examples for LLM prompts. | — |
 | `system_prompt_builder` | Build a structured system prompt from components: role, task, constraints, output format, tone, language, and examples. | — |
-| `rerank_evaluate` | Evaluate RAG retrieval: rank passages against a query, compute Precision@k / Recall@k and a PASS/FAIL verdict from your relevance labels. | eval |
+| `rerank_evaluate` | Evaluate RAG retrieval: rank passages against a query, compute Precision@k / Recall@k and a PASS/FAIL verdict from your relevance labels (INCONCLUSIVE without them). | eval |
 
 ## llm
 
