@@ -78,4 +78,4 @@ All 153 tools, by category: [TOOLS.md](TOOLS.md).
 
 ---
 
-Generated from the server's own definitions on 2026-11-08. The live list (`GET https://www.ia-qa.com/mcp`) wins if this page disagrees.
+Generated from the server's own definitions on 2026-11-09. The live list (`GET https://www.ia-qa.com/mcp`) wins if this page disagrees.

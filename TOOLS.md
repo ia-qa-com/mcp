@@ -1,6 +1,6 @@
 # IA-QA MCP tools (153)
 
-Generated on 2026-11-08 from the server's definitions. Live list: `GET https://www.ia-qa.com/mcp` · full schemas: `GET https://www.ia-qa.com/mcp?full=1`.
+Generated on 2026-11-09 from the server's definitions. Live list: `GET https://www.ia-qa.com/mcp` · full schemas: `GET https://www.ia-qa.com/mcp?full=1`.
 
 ## eval
 
@@ -208,7 +208,7 @@ Generated on 2026-11-08 from the server's definitions. Live list: `GET https://w
 | `hash_text` | Compute a cryptographic hash of a text string. | security, data |
 | `base64_encode` | Encode a UTF-8 string to Base64. | data |
 | `base64_decode` | Decode a Base64 string back to UTF-8 text. | data |
-| `url_encode` | Percent-encode a string for safe use in URLs. | data |
+| `url_encode` | Percent-encode a string for safe use in query strings, path segments or form-encoded bodies, so it cannot inject or break a URL. | data |
 | `url_decode` | Decode a percent-encoded URL string back to plain text. | data |
 | `generate_password` | Generate a cryptographically secure random password using crypto.randomBytes. | security |
 | `color_convert` | Convert a color between HEX, RGB, and HSL formats. | data |
