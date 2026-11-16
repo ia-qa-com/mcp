@@ -81,7 +81,7 @@ Generated on 2026-11-16 from the server's definitions. Live list: `GET https://w
 |---|---|---|
 | `redact_pii` | Automatically detect and redact Personally Identifiable Information (PII) from text. | security |
 | `secret_scan` | Scan text or code for leaked secrets: API keys (AWS, GCP, Azure, OpenAI, Anthropic, Stripe, GitHub, GitLab, Slack, Twilio, SendGrid, HuggingFace), Slack / Teams / Discord webhook URLs, private keys, JWTs, database connection strings, Bearer and Basic auth headers, and hard-coded values assigned to password/secret/token names (a value read at run time — Cypress.env(), os.getenv() — is not flagged). | security |
-| `shield_analyze` | One-call safety gate for an LLM response: injection on the response, prompt and source, toxicity, PII, grounding (with source), guardrail rules, quality, plus an LLM review on Groq (model "none": nothing leaves the server). | security |
+| `shield_analyze` | One-call safety gate for an LLM response: injection on the response, prompt and source, toxicity, PII, grounding (with source), guardrail rules, plus an LLM review on Groq (model "none": nothing leaves the server). | security |
 | `security_headers_check` | Analyse the HTTP security headers of a public URL OR of raw response headers you paste in. | security |
 | `ssl_certificate_check` | Analyse the SSL/TLS certificate of any HTTPS host. | security |
 | `cors_test` | Audit a URL for CORS misconfigurations across several origins: wildcard with credentials, reflected origin, null origin, subdomain bypass, missing Vary. | security |
