@@ -11,8 +11,8 @@ This repository **describes** the hosted server; it holds no server code. The li
 
 | Endpoint | Tools listed | For |
 |---|---|---|
-| `https://www.ia-qa.com/mcp` | all 153 | clients with no tool limit |
-| `https://www.ia-qa.com/mcp/security` | 30 | prompt injection, PII and secret scans, TLS/header/CORS audits, MCP server checks |
+| `https://www.ia-qa.com/mcp` | all 154 | clients with no tool limit |
+| `https://www.ia-qa.com/mcp/security` | 31 | prompt injection, PII and secret scans, TLS/header/CORS audits, MCP server checks |
 | `https://www.ia-qa.com/mcp/eval` | 39 | hallucination, eval contracts, semantic and RAG tests, tokens and models |
 | `https://www.ia-qa.com/mcp/data` | 36 | JSON/YAML/CSV, schema validation, encoding, text and time utilities |
 
@@ -64,7 +64,7 @@ For tools that must run next to your app (selector self-healing, app discovery),
 
 ### `security` — https://www.ia-qa.com/mcp/security
 
-`prompt_injection_scan` · `shield_analyze` · `guardrail_test` · `toxicity_scan` · `bias_detect` · `redact_pii` · `secret_scan` · `detect_secrets` · `security_headers_check` · `ssl_certificate_check` · `cors_test` · `cors_checker` · `cookie_security_audit` · `web_security_audit` · `validate_url` · `decode_jwt` · `generate_hmac` · `hash_text` · `generate_password` · `mcp_server_evaluate` · `mcp_server_health_check` · `mcp_schema_lint` · `validate_mcp_response` · `function_call_validate` · `validate_agent_trajectory` · `latency_benchmark` · `parse_http_headers` · `http_status_lookup` · `find_tool` · `rate_tool`
+`prompt_injection_scan` · `shield_analyze` · `guardrail_test` · `toxicity_scan` · `bias_detect` · `redact_pii` · `secret_scan` · `detect_secrets` · `security_headers_check` · `ssl_certificate_check` · `cors_test` · `cors_checker` · `cookie_security_audit` · `web_security_audit` · `validate_url` · `decode_jwt` · `generate_hmac` · `hash_text` · `generate_password` · `mcp_server_evaluate` · `mcp_server_health_check` · `mcp_schema_lint` · `validate_mcp_response` · `function_call_validate` · `validate_agent_trajectory` · `agent_checkout_eval` · `latency_benchmark` · `parse_http_headers` · `http_status_lookup` · `find_tool` · `rate_tool`
 
 ### `eval` — https://www.ia-qa.com/mcp/eval
 
@@ -74,8 +74,8 @@ For tools that must run next to your app (selector self-healing, app discovery),
 
 `format_json` · `json_schema_validate` · `json_diff` · `extract_json_path` · `flatten_json` · `json_to_yaml` · `yaml_to_json` · `xml_to_json` · `parse_csv` · `json_to_csv` · `mock_from_schema` · `json_schema_generate` · `openapi_validate` · `timestamp_convert` · `cron_parse` · `validate_email` · `regex_test` · `diff_text` · `text_stats` · `case_convert` · `generate_slug` · `base64_encode` · `base64_decode` · `url_encode` · `url_decode` · `generate_uuid` · `hash_text` · `number_base_convert` · `color_convert` · `lorem_ipsum` · `decode_jwt` · `env_parse` · `count_code_lines` · `lint_commit_message` · `find_tool` · `rate_tool`
 
-All 153 tools, by category: [TOOLS.md](TOOLS.md).
+All 154 tools, by category: [TOOLS.md](TOOLS.md).
 
 ---
 
-Generated from the server's own definitions on 2026-11-16. The live list (`GET https://www.ia-qa.com/mcp`) wins if this page disagrees.
+Generated from the server's own definitions on 2026-11-18. The live list (`GET https://www.ia-qa.com/mcp`) wins if this page disagrees.

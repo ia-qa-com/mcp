@@ -1,6 +1,6 @@
-# IA-QA MCP tools (153)
+# IA-QA MCP tools (154)
 
-Generated on 2026-11-16 from the server's definitions. Live list: `GET https://www.ia-qa.com/mcp` · full schemas: `GET https://www.ia-qa.com/mcp?full=1`.
+Generated on 2026-11-18 from the server's definitions. Live list: `GET https://www.ia-qa.com/mcp` · full schemas: `GET https://www.ia-qa.com/mcp?full=1`.
 
 ## eval
 
@@ -9,12 +9,13 @@ Generated on 2026-11-16 from the server's definitions. Live list: `GET https://w
 | `get_testing_guidelines` | Query the IA-QA methodology knowledge base. | eval |
 | `run_eval_contract` | Run an IA-EVAL test suite (.ia-eval.yaml contract): call the model per scenario; return passed (true, false, null if undecided) and a verdict (PASS, FAIL, PARTIAL). | eval |
 | `run_semantic_tests` | Semantic assertion primitive: compare actual vs expected text pairs using cosine similarity + ROUGE-L. | eval |
-| `generate_ci_workflow` | Generate a ready-to-commit GitHub Actions workflow that gates a build on IA-QA: "eval_contract" runs a .ia-eval.yaml through ia-qa-com/eval-action@v1 (needs a provider key as a repo secret), "cli_checks" runs deterministic tools via npx @ia-qa/cli and fails the build on their verdict, "selector_drift" gates E2E selectors with @ia-qa/self-healing. | eval |
+| `generate_ci_workflow` | Generate a ready-to-commit GitHub Actions workflow that gates a build on IA-QA: "eval_contract" runs a .ia-eval.yaml through ia-qa-com/eval-action@v1 (provider key as a repo secret), "cli_checks" runs deterministic tools via npx @ia-qa/cli and fails on their verdict, "selector_drift" gates E2E selectors with @ia-qa/self-healing. | eval |
 | `needle_haystack_generate` | Generate a "needle in a haystack" test: embeds a target fact into a large block of filler text at a specified position. | eval |
 | `list_local_tests` | Discover .ia-eval.yaml LLM test suite files in the project directory. | — |
 | `generate_html_report` | Convert a run_eval_contract() LLM Test Runner JSON result into a fully self-contained dark-themed HTML report with Pass/Fail badges, side-by-side Input/Output/Ground-Truth panels, evaluator score bars, and a radar chart. | — |
 | `generate_eval_yaml` | Generate a complete .ia-eval.yaml evaluation contract from a plain-language description of what your LLM should do. | eval |
 | `validate_agent_trajectory` | Run declarative assertions on an agent trace (OpenAI tool calls, Anthropic tool_use, LangChain run trees, ReAct logs). | security |
+| `agent_checkout_eval` | Judges a shopping agent's run in Sandbox Bazaar, a fictional test shop whose scenarios hide known traps (injected instructions, last-step fees, pre-checked subscription, fake discount, cheaper listing, look-alike merchant, forced substitute). | security |
 | `metamorphic_check` | Reference-free stability check: does an assistant's answer stay the same when the QUESTION is transformed (case, typo, paraphrase, reorder, translation)? | eval |
 | `test_skill` | Test a SKILL.md. | eval |
 | `skill_interview` | Help a person write a SKILL.md they can test. | eval |
@@ -35,9 +36,9 @@ Generated on 2026-11-16 from the server's definitions. Live list: `GET https://w
 | `analyze_diff_bugs` | Pattern-based diff linter: flags a fixed set of risky shapes in changed code — query-string interpolation (SQL/Cypher/Mongo injection shape), shell interpolation, eval/new Function, empty catch blocks, regex built from a variable, fewer catch blocks than before, and named authorization guards that disappeared. | — |
 | `run_pr_gate_pipeline` | Review triage for a pull request. | — |
 | `diff_mappings` | Diff a baseline page mapping against a current one and return a CI-style verdict: PASS / FIX / BLOCK, plus per-element drift (ok, renamed, healable, ambiguous, lost, added, rebound). | — |
-| `sandbox_scenario` | Get a ready-made selector-drift test case with a known-correct answer, for testing this MCP server or an agent workflow end to end. | — |
+| `sandbox_scenario` | A selector-drift test case whose answer is known: real DOM captures of a breakable app before and after one UI change (renamed label, swapped buttons, duplicated locator, element moved behind a menu…), plus the verdict the two contracts MUST produce. | — |
 | `prompt_injection_scan` | Scan user input or prompts for prompt injection patterns. | security |
-| `hallucination_check` | Lexical hallucination check: verifies an LLM answer's words, numbers and polarity against the provided source/context. | eval |
+| `hallucination_check` | Lexical hallucination check: an LLM answer's words, numbers and polarity against the source. | eval |
 | `guardrail_test` | Test an LLM response against a set of guardrail rules: must-include, must-not-include, max length, required format, language, forbidden patterns, and custom regex. | security |
 | `diff_text` | Compute a unified line-by-line diff between two text strings (LCS algorithm). | data |
 | `validate_mcp_response` | Validate that an MCP tool response conforms to expected format, schema, and content rules. | security |
@@ -45,7 +46,7 @@ Generated on 2026-11-16 from the server's definitions. Live list: `GET https://w
 | `compare_responses` | Compare two ALREADY-PRODUCED outputs (e.g. | eval |
 | `analyze_responses` | Semantically analyze N already-produced model outputs for the SAME task (the MCP counterpart to the LLM Sandbox). | eval |
 | `prompt_test_suite` | Define a test suite for a prompt: provide the system prompt, user prompt, and expected output criteria. | eval |
-| `mcp_server_health_check` | Check an MCP server's tool definitions without contacting it — for a server not deployed yet, a stdio server, or a CI gate. | security |
+| `mcp_server_health_check` | Check an MCP server's tool definitions without contacting it (undeployed, stdio, CI). | security |
 | `mcp_server_evaluate` | Check that a live MCP server over Streamable HTTP speaks the protocol, 2026-07-28 or earlier: handshake or server/discover, tools/list and its definitions, error codes, one tools/call, structuredContent against outputSchema, latency. | security |
 | `llm_format_check` | Validate that an LLM output matches an expected format: JSON, Markdown, code block, bullet list, numbered list, table, YAML, XML, or custom regex. | eval |
 | `consistency_check` | Compare multiple LLM responses to the same prompt and detect inconsistencies using Jaccard word-overlap similarity and fact drift (number comparison). | eval |
