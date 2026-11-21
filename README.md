@@ -11,7 +11,7 @@ This repository **describes** the hosted server; it holds no server code. The li
 
 | Endpoint | Tools listed | For |
 |---|---|---|
-| `https://www.ia-qa.com/mcp` | all 154 | clients with no tool limit |
+| `https://www.ia-qa.com/mcp` | all 155 | clients with no tool limit |
 | `https://www.ia-qa.com/mcp/security` | 31 | prompt injection, PII and secret scans, TLS/header/CORS audits, MCP server checks |
 | `https://www.ia-qa.com/mcp/eval` | 39 | hallucination, eval contracts, semantic and RAG tests, tokens and models |
 | `https://www.ia-qa.com/mcp/data` | 36 | JSON/YAML/CSV, schema validation, encoding, text and time utilities |
@@ -74,7 +74,7 @@ For tools that must run next to your app (selector self-healing, app discovery),
 
 `format_json` · `json_schema_validate` · `json_diff` · `extract_json_path` · `flatten_json` · `json_to_yaml` · `yaml_to_json` · `xml_to_json` · `parse_csv` · `json_to_csv` · `mock_from_schema` · `json_schema_generate` · `openapi_validate` · `timestamp_convert` · `cron_parse` · `validate_email` · `regex_test` · `diff_text` · `text_stats` · `case_convert` · `generate_slug` · `base64_encode` · `base64_decode` · `url_encode` · `url_decode` · `generate_uuid` · `hash_text` · `number_base_convert` · `color_convert` · `lorem_ipsum` · `decode_jwt` · `env_parse` · `count_code_lines` · `lint_commit_message` · `find_tool` · `rate_tool`
 
-All 154 tools, by category: [TOOLS.md](TOOLS.md).
+All 155 tools, by category: [TOOLS.md](TOOLS.md).
 
 ---
 

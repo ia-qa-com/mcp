@@ -1,4 +1,4 @@
-# IA-QA MCP tools (154)
+# IA-QA MCP tools (155)
 
 Generated on 2026-11-21 from the server's definitions. Live list: `GET https://www.ia-qa.com/mcp` · full schemas: `GET https://www.ia-qa.com/mcp?full=1`.
 
@@ -41,6 +41,7 @@ Generated on 2026-11-21 from the server's definitions. Live list: `GET https://w
 | `hallucination_check` | Lexical hallucination check: an LLM answer's words, numbers and polarity against the source. | eval |
 | `guardrail_test` | Test an LLM response against a set of guardrail rules: must-include, must-not-include, max length, required format, language, forbidden patterns, and custom regex. | security |
 | `diff_text` | Compute a unified line-by-line diff between two text strings (LCS algorithm). | data |
+| `analyze_test_results` | Reads JUnit XML reports of test runs (Playwright, Cypress, Jest, Vitest, pytest, Surefire…), oldest first, and tells regressions from flaky tests. | — |
 | `validate_mcp_response` | Validate that an MCP tool response conforms to expected format, schema, and content rules. | security |
 | `llm_output_validator` | Validate an LLM response against QA criteria: format checks (JSON, code, markdown), content rules (must-include, must-not-include), length constraints, language detection, and safety patterns. | eval |
 | `compare_responses` | Compare two ALREADY-PRODUCED outputs (e.g. | eval |
@@ -88,7 +89,7 @@ Generated on 2026-11-21 from the server's definitions. Live list: `GET https://w
 | `cors_test` | Audit a URL for CORS misconfigurations across several origins: wildcard with credentials, reflected origin, null origin, subdomain bypass, missing Vary. | security |
 | `cors_checker` | Would a browser on this origin be allowed to read this URL? | security |
 | `cookie_security_audit` | Audit the security attributes of cookies set by any URL. | security |
-| `web_security_audit` | Run a comprehensive web security audit combining headers, SSL, CORS, and cookies checks — then use an LLM to produce a prioritised remediation plan. | security |
+| `web_security_audit` | Web security audit: security_headers_check + ssl_certificate_check + cors_test + cookie_security_audit in parallel, one grade capped by the weakest link. | security |
 
 ## rag
 
