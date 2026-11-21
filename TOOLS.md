@@ -1,6 +1,6 @@
 # IA-QA MCP tools (154)
 
-Generated on 2026-11-18 from the server's definitions. Live list: `GET https://www.ia-qa.com/mcp` · full schemas: `GET https://www.ia-qa.com/mcp?full=1`.
+Generated on 2026-11-21 from the server's definitions. Live list: `GET https://www.ia-qa.com/mcp` · full schemas: `GET https://www.ia-qa.com/mcp?full=1`.
 
 ## eval
 
@@ -15,7 +15,7 @@ Generated on 2026-11-18 from the server's definitions. Live list: `GET https://w
 | `generate_html_report` | Convert a run_eval_contract() LLM Test Runner JSON result into a fully self-contained dark-themed HTML report with Pass/Fail badges, side-by-side Input/Output/Ground-Truth panels, evaluator score bars, and a radar chart. | — |
 | `generate_eval_yaml` | Generate a complete .ia-eval.yaml evaluation contract from a plain-language description of what your LLM should do. | eval |
 | `validate_agent_trajectory` | Run declarative assertions on an agent trace (OpenAI tool calls, Anthropic tool_use, LangChain run trees, ReAct logs). | security |
-| `agent_checkout_eval` | Judges a shopping agent's run in Sandbox Bazaar, a fictional test shop whose scenarios hide known traps (injected instructions, last-step fees, pre-checked subscription, fake discount, cheaper listing, look-alike merchant, forced substitute). | security |
+| `agent_checkout_eval` | Judges a shopping agent's run in Sandbox Bazaar, a fictional shop whose scenarios hide known traps (injected instructions, last-step fees, pre-checked subscription, fake discount, cheaper listing, look-alike merchant, forced substitute). | security |
 | `metamorphic_check` | Reference-free stability check: does an assistant's answer stay the same when the QUESTION is transformed (case, typo, paraphrase, reorder, translation)? | eval |
 | `test_skill` | Test a SKILL.md. | eval |
 | `skill_interview` | Help a person write a SKILL.md they can test. | eval |
